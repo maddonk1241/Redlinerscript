@@ -11,6 +11,33 @@ local VIM     = game:GetService("VirtualInputManager")
 local lp      = Players.LocalPlayer
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/deividcomsono/Obsidian/refs/heads/main/Library.lua"))()
 
+local UiTheme = {
+    Background = Color3.fromRGB(24, 8, 10),
+    Panel = Color3.fromRGB(37, 12, 15),
+    Accent = Color3.fromRGB(201, 42, 62),
+    AccentSoft = Color3.fromRGB(236, 95, 112),
+    TextMain = Color3.fromRGB(255, 235, 238),
+    TextSoft = Color3.fromRGB(232, 170, 178),
+    TextMuted = Color3.fromRGB(177, 112, 121),
+    AccentText = Color3.fromRGB(36, 3, 8),
+    Error = Color3.fromRGB(255, 120, 130),
+}
+
+if Library and Library.Scheme then
+    Library.Scheme.BackgroundColor = UiTheme.Background
+    Library.Scheme.MainColor = UiTheme.Panel
+    Library.Scheme.AccentColor = UiTheme.Accent
+    Library.Scheme.OutlineColor = UiTheme.AccentSoft
+    Library.Scheme.FontColor = UiTheme.TextMain
+    Library.Scheme.RedColor = UiTheme.Error
+    Library.Scheme.DestructiveColor = UiTheme.Accent
+    Library.Scheme.DarkColor = UiTheme.AccentText
+    Library.Scheme.WhiteColor = UiTheme.TextMain
+    pcall(function()
+        Library:UpdateColorsUsingRegistry()
+    end)
+end
+
 -- â”€â”€ Persistence â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 local function cfgPath(tag)
     return("PLunderHub_REDLINERS_%s_%s.json"):format((lp.Name or"u"):gsub("[^%w]",""),tag)
@@ -285,7 +312,7 @@ table.insert(conns, Run.Heartbeat:Connect(function()
         if not BOXES[e.model] then
             local b=Instance.new("SelectionBox")
             b.Adornee=e.model
-            b.Color3=Color3.fromRGB(255,60,60)
+            b.Color3=UiTheme.AccentSoft
             b.SurfaceTransparency=1
             b.LineThickness=0.06
             b.Parent=WS
@@ -312,8 +339,8 @@ table.insert(conns, Run.Heartbeat:Connect(function()
         if not CHAMS[e.model] then
             local h=Instance.new("Highlight")
             h.Adornee=e.model
-            h.FillColor=Color3.fromRGB(255,50,50)
-            h.OutlineColor=Color3.fromRGB(255,80,80)
+            h.FillColor=UiTheme.Accent
+            h.OutlineColor=UiTheme.AccentSoft
             h.FillTransparency=0.4
             h.OutlineTransparency=0
             h.DepthMode=Enum.HighlightDepthMode.AlwaysOnTop  -- penetrates all geometry
@@ -328,7 +355,7 @@ local fovGui=Instance.new("ScreenGui") fovGui.Name="RedlinersFOV" fovGui.ResetOn
 fovGui.IgnoreGuiInset=true fovGui.ZIndexBehavior=Enum.ZIndexBehavior.Sibling fovGui.Parent=lp:WaitForChild("PlayerGui")
 local fovCircle=Instance.new("ImageLabel") fovCircle.BackgroundTransparency=1
 fovCircle.AnchorPoint=Vector2.new(0.5,0.5) fovCircle.Position=UDim2.new(0.5,0,0.5,0)
-fovCircle.Image="rbxassetid://3570695787" fovCircle.ImageColor3=Color3.fromRGB(255,255,255)
+fovCircle.Image="rbxassetid://3570695787" fovCircle.ImageColor3=UiTheme.AccentSoft
 fovCircle.ImageTransparency=0.4 fovCircle.Visible=false fovCircle.Parent=fovGui
 table.insert(conns,Run.RenderStepped:Connect(function()
     if not alive then return end
