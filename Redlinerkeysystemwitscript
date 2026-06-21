@@ -1,5 +1,6 @@
-local REQUIRED_KEY = "Plunder-Hub-Test"
-local WINDOW_TITLE = "PLunder Hub Key System"
+local REQUIRED_KEY = "Plunder-Hub"
+local REQUIRED_KEY = "Atlas-Hub"
+local WINDOW_TITLE = "Plunder/Atlas Hub Key System"
 
 local Players = game:GetService("Players")
 local StarterGui = game:GetService("StarterGui")
@@ -35,7 +36,7 @@ end
 
 local function runProtectedScript()
     local ok, err = pcall(function()
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/maddonk1241/Redlinerscript/main/Redliner.lua"))()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/maddonk1241/Redlinerscript/eeb49ead830973d40c29b293cbc592b3f3fe76dc/Redliner.lua"))()
     end)
 
     if ok then
@@ -89,7 +90,7 @@ local title = Instance.new("TextLabel")
 title.Size = UDim2.new(1, -20, 0, 30)
 title.Position = UDim2.new(0, 10, 0, 10)
 title.BackgroundTransparency = 1
-title.Text = "PLunder Hub | Key System"
+title.Text = "PLunder/Atlas-Hub | Key System"
 title.TextColor3 = Theme.TextMain
 title.Font = Enum.Font.GothamBold
 title.TextSize = 18
