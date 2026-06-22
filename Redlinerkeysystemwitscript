@@ -1,5 +1,4 @@
-local REQUIRED_KEY = "Plunder-Hub"
-local REQUIRED_KEY = "Atlas-Hub"
+local REQUIRED_KEY = "PLDR-6769"
 local WINDOW_TITLE = "Plunder/Atlas Hub Key System"
 
 local Players = game:GetService("Players")
